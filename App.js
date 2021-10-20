@@ -28,11 +28,8 @@ export default function App() {
     setPhone(enteredText);
   };
 
-
-  // const Intercom = NativeModules.MyIntercomModule;
-  // const {MyIntercomModule} = NativeModules
   // const { Zendesk } = NativeModules;
-  
+
   const Zendesk = NativeModules.RNZendeskModule;
 
   return (
