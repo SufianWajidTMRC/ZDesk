@@ -49,7 +49,6 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-//        Intercom.client().displayMessenger();
 
                 try {
                     Chat.INSTANCE.init(context, "db3P4mXRizfzjfqb4fczfOM0Uao3Teru");

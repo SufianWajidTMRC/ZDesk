@@ -10,7 +10,6 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
-import io.intercom.android.sdk.Intercom;
 
 public class RNZendeskModule extends ReactContextBaseJavaModule {
     private static ReactApplicationContext reactApplicationContext;
@@ -27,32 +26,14 @@ public class RNZendeskModule extends ReactContextBaseJavaModule {
         return "RNZendeskModule";
     }
 
-    @ReactMethod
-    public void initIntercom(String message){
-        Log.e(TAG, "initIntercom: message = "+message);
-        Toast.makeText(reactApplicationContext, "Message = "+message, Toast.LENGTH_SHORT).show();
-        try {
-            Intercom.client().logout();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Intercom.client().registerUnidentifiedUser();
-    }
 
     @ReactMethod
     public void displayMessenger(String message){
         Log.e(TAG, "displayMessenger: "+message);
-        Toast.makeText(reactApplicationContext, "displayMessenger 222", Toast.LENGTH_SHORT).show();
-//        Intercom.client().displayMessenger();
-
+        Toast.makeText(reactApplicationContext, "test zendesk without opening second activity", Toast.LENGTH_SHORT).show();
 //        MessagingActivity.builder()
 //                .withEngines(ChatEngine.engine())
 //                .show(reactApplicationContext);
-
-        Intent intent = new Intent(reactApplicationContext, SecondActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        reactApplicationContext.startActivity(intent);
     }
 
     @ReactMethod
@@ -61,11 +42,7 @@ public class RNZendeskModule extends ReactContextBaseJavaModule {
         Log.e(TAG, "openZendesk: email = "+email);
         Log.e(TAG, "openZendesk: phone = "+phone);
         Toast.makeText(reactApplicationContext, "openZendesk 222", Toast.LENGTH_SHORT).show();
-//        Intercom.client().displayMessenger();
 
-//        MessagingActivity.builder()
-//                .withEngines(ChatEngine.engine())
-//                .show(reactApplicationContext);
 
         Intent intent = new Intent(reactApplicationContext, SecondActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -75,38 +52,3 @@ public class RNZendeskModule extends ReactContextBaseJavaModule {
         reactApplicationContext.startActivity(intent);
     }
 }
-
-//        Zendesk URL
-//        Give this URL to your developers. It is used to connect to the app.
-//        https://rnsecondapp.zendesk.com
-
-//        App ID
-//        Give this App ID to your developers. It is used to identify the app.
-//        e311fb5e362c129cd72ae2b01553b7750cfff4c35218fb6f
-
-//        Client ID
-//        Give this Client ID to your developers. It is used to identify the app.
-//        mobile_sdk_client_eb89305423a388b06436
-
-//        Android code snippet
-//        Give this code snippet to your developers. For security reasons it will be shown only once.
-//        Zendesk.INSTANCE.init(context, "https://rnsecondapp.zendesk.com",
-//        "e311fb5e362c129cd72ae2b01553b7750cfff4c35218fb6f",
-//        "mobile_sdk_client_eb89305423a388b06436");
-//        Support.INSTANCE.init(Zendesk.INSTANCE);
-
-//        iOS code snippet
-//        Give this code snippet to your developers. For security reasons it will be shown only once.
-//        Objective-C
-//        [ZDKZendesk initializeWithAppId: @"e311fb5e362c129cd72ae2b01553b7750cfff4c35218fb6f"
-//        clientId: @"mobile_sdk_client_eb89305423a388b06436"
-//        zendeskUrl: @"https://rnsecondapp.zendesk.com"];
-//        [ZDKSupport initializeWithZendesk: [ZDKZendesk instance]];
-//
-//        Swift
-//        Zendesk.initialize(appId: "e311fb5e362c129cd72ae2b01553b7750cfff4c35218fb6f",
-//        clientId: "mobile_sdk_client_eb89305423a388b06436",
-//        zendeskUrl: "https://rnsecondapp.zendesk.com")
-//        Support.initialize(withZendesk: Zendesk.instance)
-
-

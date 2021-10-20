@@ -13,7 +13,6 @@ import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-import io.intercom.android.sdk.Intercom;
 import zendesk.chat.Chat;
 
 public class MainApplication extends Application implements ReactApplication {
@@ -49,25 +48,11 @@ public class MainApplication extends Application implements ReactApplication {
     public void onCreate() {
         super.onCreate();
 
-        //initializing intercom chat feature
-        Intercom.initialize(this, "android_sdk-455f11faa3a758edcefadd171cb4a1601e610bdc", "w2i4jdbq");
-
-
         Chat.INSTANCE.init(this, "db3P4mXRizfzjfqb4fczfOM0Uao3Teru", "e311fb5e362c129cd72ae2b01553b7750cfff4c35218fb6f");
 
         SoLoader.init(this, /* native exopackage */ false);
         initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
     }
-
-//    private void initializeZendeskConfig() {
-//
-//        ZendeskConfig.INSTANCE.init(mActivity, mActivity.getResources().getString(R.string.zendesk_URL),
-//                mActivity.getResources().getString(R.string.zendesk_applicationId),
-//                mActivity.getResources().getString(R.string.zendesk_oauthClientId));
-//
-//        Identity identity = new AnonymousIdentity.Builder().build();
-//        ZendeskConfig.INSTANCE.setIdentity(identity);
-//    }
 
     /**
      * Loads Flipper in React Native templates. Call this in the onCreate method with something like
